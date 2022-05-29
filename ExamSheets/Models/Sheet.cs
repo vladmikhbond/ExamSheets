@@ -16,31 +16,23 @@ namespace ExamSheets.Models
         const string Z = " зарах", NZ = "незарах";
         const string M2 = "незадов", M3 = " задов", M4 = " добре", M5 = " відм";
 
-        Document _document;
-        List<TableRow> _rows;
+        readonly Document _document;
+        List<TableRow> _tableRows;
         Dictionary<string, string> _marks;
-        string _path;
-        string _date;
-        Check _check;
-        
+        readonly string _path;
+        readonly string _date;
+        readonly Check _check;
+
+        public string OutputPath =>
+            Path.ChangeExtension(_path, "FILLED.doc");
+
         public Sheet(string path, string date, Check check)
         {
             _document = new Document(path);
-            MakeRows();
+            ExtractRows();
             _path = path;
             _date = date;
             _check = check;
-        }
-
-
-        void MakeRows()
-        {
-            Table table1 = _document.Sections[0].Paragraphs[8].NextSibling as Table;
-            Table table2 = _document.Sections[0].Paragraphs[9].NextSibling as Table;
-
-            _rows = new List<TableRow>();
-            for (int i = 3; i < table1.Rows.Count; i++) _rows.Add(table1.Rows[i]);
-            for (int i = 1; i < table2.Rows.Count; i++) _rows.Add(table2.Rows[i]);
         }
 
         public void LoadMarks(string path)
@@ -50,14 +42,25 @@ namespace ExamSheets.Models
                 .ToDictionary(ar => ar[0].Trim(), ar => ar[1].Trim());
         }
 
+        void ExtractRows()
+        {
+            Table table1 = _document.Sections[0].Paragraphs[8].NextSibling as Table;
+            Table table2 = _document.Sections[0].Paragraphs[9].NextSibling as Table;
+
+            _tableRows = new List<TableRow>();
+            for (int i = 3; i < table1.Rows.Count; i++) _tableRows.Add(table1.Rows[i]);
+            for (int i = 1; i < table2.Rows.Count; i++) _tableRows.Add(table2.Rows[i]);
+        }
+
         string GetFullName(int r)
         {
-            string[] items = _rows[r].Cells[1].Paragraphs[0].Items
+            string[] items = _tableRows[r].Cells[1].Paragraphs[0].Items
               .Cast<TextRange>()
               .Select(t => t.Text)
               .ToArray();
             return string.Join("", items);
         }
+
         (string, string, string) Get3marks(string surname)
         {
             int[] ns    =   { 1,   35,  60,  66,  75,  90, 96, 100 };
@@ -76,24 +79,24 @@ namespace ExamSheets.Models
             return ("", "", "");
         }
 
-        Paragraph Parag(int r, int c) =>
-                _rows[r].Cells[c].Paragraphs[0];
+        Paragraph ParInCell(int r, int c) =>
+                _tableRows[r].Cells[c].Paragraphs[0];
 
         public string WriteData()
         {
             string message = "";
             var marks = new List<string>();
-            for (int i = 0; i < _rows.Count; i++)
+            for (int i = 0; i < _tableRows.Count; i++)
             {
                 string fullName = GetFullName(i);
                 string surname = fullName.Split(' ')[0];
                 var (vidm, _90, a) = Get3marks(surname);
                 if (!string.IsNullOrEmpty(a))
                 {
-                    Parag(i, 3).Text = vidm;
-                    Parag(i, 4).Text = _90;
-                    Parag(i, 5).Text = a;
-                    Parag(i, 6).Text = " " + _date;
+                    ParInCell(i, 3).Text = vidm;
+                    ParInCell(i, 4).Text = _90;
+                    ParInCell(i, 5).Text = a;
+                    ParInCell(i, 6).Text = " " + _date;
                     marks.Add(vidm);
                 } 
                 else
@@ -101,16 +104,10 @@ namespace ExamSheets.Models
                     message += $"No mark for: {fullName} \n";
                 }
             }
-            WriteSummary(marks);
-
-            
-            _document.SaveToFile(OutputPath, FileFormat.Doc);
-            
+            WriteSummary(marks);          
+            _document.SaveToFile(OutputPath, FileFormat.Doc);           
             return message += "Ready.";
         }
-
-        public string OutputPath => 
-            Path.ChangeExtension(_path, "FILLED.doc");
 
         void WriteSummary(List<string>marks)
         {
@@ -143,16 +140,8 @@ namespace ExamSheets.Models
                 t.Rows[5].Cells[3].FirstParagraph.Text = m2.ToString();
             }
         }
-        public void Save (string path)
-        {
-            
-        }
     }
 }
 
-
-
-
-//var tr = t3.Rows[1].Cells[4].FirstParagraph.Text;
 
 
