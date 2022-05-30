@@ -1,13 +1,5 @@
 ﻿using ExamSheets.Models;
-using Spire.Doc;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.IO;
 using System.Windows.Forms;
 
 namespace ExamSheets
@@ -17,23 +9,7 @@ namespace ExamSheets
         Sheet _sheet; 
         public MainForm()
         {
-         
-
             InitializeComponent();
-            //var docFile = @"c:\111\TestDoc.doc";
-            //var markFile = @"c:\111\000.txt";
-            //try
-            //{
-            //    _sheet = new Sheet(docFile, "19.10", Check.Exam);
-            //    _sheet.LoadMarks(markFile);
-
-            //    statusStrip.Text = _sheet.WriteData();
-            //    System.Diagnostics.Process.Start(_sheet.OutputPath);
-            //} 
-            //catch (Exception ex)
-            //{
-            //    dataBox.Text += "------------------\n" + ex.Message;
-            //}
         }
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
@@ -42,17 +18,27 @@ namespace ExamSheets
             {
                 try
                 {
-                    _sheet = new Sheet(openDocDialog.FileName, "19.10", Check.Exam);
+                    _sheet = new Sheet(openDocDialog.FileName, dateBox.Text, examRadio.Checked);
                     _sheet.LoadMarks(dataBox.Text);
 
-                    statusStrip.Text = _sheet.WriteData();
+                    messageBox.Text = _sheet.WriteData();
                     System.Diagnostics.Process.Start(_sheet.OutputPath);
                 }
                 catch (Exception ex)
                 {
-                    dataBox.Text += "------------------\n" + ex.Message;
+                    messageBox.Text += "\r\n" + ex.Message;
                 }
             }
+        }
+
+        private void contentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            messageBox.Text = 
+@"1.Заповніть поле дати і оберіть вид контролю.
+2.Заповніть поле оцінок (Прізвище\tОцінка\n).
+3.Відкрийте документ з відомістю (меню File/Open).
+4.Видаліть червоний рядок з початку документа.
+";
         }
     }
 }

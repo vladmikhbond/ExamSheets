@@ -10,7 +10,6 @@ using Spire.Doc.Fields;
 
 namespace ExamSheets.Models
 {
-    public enum Check { Exam, Test}
     public class Sheet
     {
         const string Z = " зарах", NZ = "незарах";
@@ -21,18 +20,18 @@ namespace ExamSheets.Models
         Dictionary<string, string> _marks;
         readonly string _path;
         readonly string _date;
-        readonly Check _check;
+        readonly bool _isExam;
 
         public string OutputPath =>
             Path.ChangeExtension(_path, "FILLED.doc");
 
-        public Sheet(string path, string date, Check check)
+        public Sheet(string path, string date, bool isExam)
         {
             _document = new Document(path);
             ExtractRows();
             _path = path;
             _date = date;
-            _check = check;
+            _isExam = isExam;
         }
 
         public void LoadMarks(string path)
@@ -78,9 +77,11 @@ namespace ExamSheets.Models
             {
                 int m = Convert.ToInt32(_marks[surname]);
                 int i = ns.TakeWhile(n => n <= m).Count() - 1;
-                var s = _check == Check.Exam ? vidm[i] : zarah[i];
                 if (i >= 0)
-                   return (s, " " + _marks[surname], " " + A[i]);
+                {
+                    var s = _isExam ? vidm[i] : zarah[i];
+                    return (s, " " + _marks[surname], " " + A[i]);
+                }
             }
             return ("", "", "");
         }
@@ -107,12 +108,12 @@ namespace ExamSheets.Models
                 } 
                 else
                 {
-                    message += $"No mark for: {fullName} \n";
+                    message += $"No mark for: {fullName} \r\n";
                 }
             }
             WriteSummary(marks);          
             _document.SaveToFile(OutputPath, FileFormat.Doc);           
-            return message += "Ready.";
+            return message;
         }
 
         void WriteSummary(List<string>marks)
@@ -126,14 +127,7 @@ namespace ExamSheets.Models
             // 	             6
             //Зараховано	 7
             //Незараховано	 8
-            if (_check == Check.Test)
-            {
-                int z = marks.Count(x => x == Z);
-                int nz = marks.Count(x => x == NZ);
-                t.Rows[7].Cells[5].FirstParagraph.Text = z.ToString();
-                t.Rows[8].Cells[5].FirstParagraph.Text = nz.ToString();
-            } 
-            else
+            if (_isExam)
             {
                 int m2 = marks.Count(x => x == M2);
                 int m3 = marks.Count(x => x == M3);
@@ -144,6 +138,13 @@ namespace ExamSheets.Models
                 t.Rows[3].Cells[4].FirstParagraph.Text = m4.ToString();
                 t.Rows[4].Cells[4].FirstParagraph.Text = m3.ToString();
                 t.Rows[5].Cells[3].FirstParagraph.Text = m2.ToString();
+            } 
+            else
+            {
+                int z = marks.Count(x => x == Z);
+                int nz = marks.Count(x => x == NZ);
+                t.Rows[7].Cells[5].FirstParagraph.Text = z.ToString();
+                t.Rows[8].Cells[5].FirstParagraph.Text = nz.ToString();
             }
         }
     }

@@ -40,7 +40,11 @@
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.openDocDialog = new System.Windows.Forms.OpenFileDialog();
             this.dataBox = new System.Windows.Forms.TextBox();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.messageBox = new System.Windows.Forms.TextBox();
+            this.dateBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.testRadio = new System.Windows.Forms.RadioButton();
+            this.examRadio = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,9 +54,9 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.helpToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Location = new System.Drawing.Point(3, 3);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(393, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(343, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -101,7 +105,8 @@
             // 
             this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
             this.contentsToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.contentsToolStripMenuItem.Text = "&Contents";
+            this.contentsToolStripMenuItem.Text = "&Help...";
+            this.contentsToolStripMenuItem.Click += new System.EventHandler(this.contentsToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -116,38 +121,92 @@
             // 
             // openDocDialog
             // 
-            this.openDocDialog.FileName = "openDocDialog";
-            this.openDocDialog.Filter = "*.doc | *.doc";
+            this.openDocDialog.Filter = "Word docs|*.docx|All files|*.*";
             // 
             // dataBox
             // 
-            this.dataBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataBox.Location = new System.Drawing.Point(0, 28);
+            this.dataBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataBox.Location = new System.Drawing.Point(3, 75);
             this.dataBox.Multiline = true;
             this.dataBox.Name = "dataBox";
-            this.dataBox.Size = new System.Drawing.Size(393, 636);
-            this.dataBox.TabIndex = 2;
+            this.dataBox.Size = new System.Drawing.Size(343, 511);
+            this.dataBox.TabIndex = 4;
             this.dataBox.Text = resources.GetString("dataBox.Text");
             // 
-            // statusStrip
+            // messageBox
             // 
-            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip.Location = new System.Drawing.Point(0, 642);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(393, 22);
-            this.statusStrip.TabIndex = 3;
+            this.messageBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.messageBox.Enabled = false;
+            this.messageBox.Location = new System.Drawing.Point(3, 592);
+            this.messageBox.Multiline = true;
+            this.messageBox.Name = "messageBox";
+            this.messageBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.messageBox.Size = new System.Drawing.Size(339, 97);
+            this.messageBox.TabIndex = 4;
+            this.messageBox.TabStop = false;
+            // 
+            // dateBox
+            // 
+            this.dateBox.Location = new System.Drawing.Point(52, 38);
+            this.dateBox.Name = "dateBox";
+            this.dateBox.Size = new System.Drawing.Size(90, 22);
+            this.dateBox.TabIndex = 1;
+            this.dateBox.Text = "19.10";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(36, 16);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Date";
+            // 
+            // testRadio
+            // 
+            this.testRadio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.testRadio.AutoSize = true;
+            this.testRadio.Location = new System.Drawing.Point(291, 42);
+            this.testRadio.Name = "testRadio";
+            this.testRadio.Size = new System.Drawing.Size(55, 20);
+            this.testRadio.TabIndex = 3;
+            this.testRadio.TabStop = true;
+            this.testRadio.Text = "Test";
+            this.testRadio.UseVisualStyleBackColor = true;
+            // 
+            // examRadio
+            // 
+            this.examRadio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.examRadio.AutoSize = true;
+            this.examRadio.Checked = true;
+            this.examRadio.Location = new System.Drawing.Point(215, 42);
+            this.examRadio.Name = "examRadio";
+            this.examRadio.Size = new System.Drawing.Size(62, 20);
+            this.examRadio.TabIndex = 2;
+            this.examRadio.TabStop = true;
+            this.examRadio.Text = "Exam";
+            this.examRadio.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(393, 664);
-            this.Controls.Add(this.statusStrip);
+            this.ClientSize = new System.Drawing.Size(349, 696);
+            this.Controls.Add(this.examRadio);
+            this.Controls.Add(this.testRadio);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dateBox);
+            this.Controls.Add(this.messageBox);
             this.Controls.Add(this.dataBox);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MinimumSize = new System.Drawing.Size(300, 300);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Padding = new System.Windows.Forms.Padding(3);
+            this.Text = "Exam Sheets";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -167,7 +226,11 @@
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog openDocDialog;
         private System.Windows.Forms.TextBox dataBox;
-        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.TextBox messageBox;
+        private System.Windows.Forms.TextBox dateBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RadioButton testRadio;
+        private System.Windows.Forms.RadioButton examRadio;
     }
 }
 
