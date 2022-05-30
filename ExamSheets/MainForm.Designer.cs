@@ -36,8 +36,8 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openDocDialog = new System.Windows.Forms.OpenFileDialog();
             this.dataBox = new System.Windows.Forms.TextBox();
             this.messageBox = new System.Windows.Forms.TextBox();
@@ -108,16 +108,16 @@
             this.contentsToolStripMenuItem.Text = "&Help...";
             this.contentsToolStripMenuItem.Click += new System.EventHandler(this.contentsToolStripMenuItem_Click);
             // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(221, 6);
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.aboutToolStripMenuItem.Text = "&About...";
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(221, 6);
             // 
             // openDocDialog
             // 
@@ -144,7 +144,7 @@
             this.messageBox.Multiline = true;
             this.messageBox.Name = "messageBox";
             this.messageBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.messageBox.Size = new System.Drawing.Size(339, 97);
+            this.messageBox.Size = new System.Drawing.Size(343, 97);
             this.messageBox.TabIndex = 4;
             this.messageBox.TabStop = false;
             // 
@@ -159,7 +159,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 47);
+            this.label1.Location = new System.Drawing.Point(10, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 16);
             this.label1.TabIndex = 6;
@@ -169,7 +169,7 @@
             // 
             this.testRadio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.testRadio.AutoSize = true;
-            this.testRadio.Location = new System.Drawing.Point(291, 42);
+            this.testRadio.Location = new System.Drawing.Point(291, 39);
             this.testRadio.Name = "testRadio";
             this.testRadio.Size = new System.Drawing.Size(55, 20);
             this.testRadio.TabIndex = 3;
@@ -182,7 +182,7 @@
             this.examRadio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.examRadio.AutoSize = true;
             this.examRadio.Checked = true;
-            this.examRadio.Location = new System.Drawing.Point(215, 42);
+            this.examRadio.Location = new System.Drawing.Point(223, 39);
             this.examRadio.Name = "examRadio";
             this.examRadio.Size = new System.Drawing.Size(62, 20);
             this.examRadio.TabIndex = 2;
