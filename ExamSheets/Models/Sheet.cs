@@ -37,7 +37,13 @@ namespace ExamSheets.Models
 
         public void LoadMarks(string path)
         {
-            string[] ss = File.ReadAllLines(path);
+            string[] ss;
+            if (File.Exists(path))
+            {
+                ss = File.ReadAllLines(path);
+            } else {
+                ss = path.Split('\n').Select(s => s.Trim()).ToArray();
+            }
             _marks = ss.Select(x => x.Split('\t'))
                 .ToDictionary(ar => ar[0].Trim(), ar => ar[1].Trim());
         }

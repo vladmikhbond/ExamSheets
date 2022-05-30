@@ -17,22 +17,41 @@ namespace ExamSheets
         Sheet _sheet; 
         public MainForm()
         {
-            var docFile = @"c:\111\TestDoc.doc";
-            var markFile = @"c:\111\000.txt";
+         
 
             InitializeComponent();
+            //var docFile = @"c:\111\TestDoc.doc";
+            //var markFile = @"c:\111\000.txt";
+            //try
+            //{
+            //    _sheet = new Sheet(docFile, "19.10", Check.Exam);
+            //    _sheet.LoadMarks(markFile);
 
-            try
-            {
-                _sheet = new Sheet(docFile, "19.10", Check.Exam);
-                _sheet.LoadMarks(markFile);
+            //    statusStrip.Text = _sheet.WriteData();
+            //    System.Diagnostics.Process.Start(_sheet.OutputPath);
+            //} 
+            //catch (Exception ex)
+            //{
+            //    dataBox.Text += "------------------\n" + ex.Message;
+            //}
+        }
 
-                messageBox.Text = _sheet.WriteData();
-                System.Diagnostics.Process.Start(_sheet.OutputPath);
-            } 
-            catch (Exception ex)
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openDocDialog.ShowDialog() == DialogResult.OK)
             {
-                messageBox.Text = ex.Message;
+                try
+                {
+                    _sheet = new Sheet(openDocDialog.FileName, "19.10", Check.Exam);
+                    _sheet.LoadMarks(dataBox.Text);
+
+                    statusStrip.Text = _sheet.WriteData();
+                    System.Diagnostics.Process.Start(_sheet.OutputPath);
+                }
+                catch (Exception ex)
+                {
+                    dataBox.Text += "------------------\n" + ex.Message;
+                }
             }
         }
     }
