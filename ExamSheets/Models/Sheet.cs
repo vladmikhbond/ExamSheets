@@ -41,7 +41,7 @@ namespace ExamSheets.Models
             } else {
                 ss = path.Split('\n').Select(s => s.Trim()).ToArray();
             }
-            _marks = ss.Select(x => x.Split('\t'))
+            _marks = ss.Select(x => x.Split(new char[] { '\t' }, StringSplitOptions.RemoveEmptyEntries))
                 .ToDictionary(ar => ar[0].Trim(), ar => ar[1].Trim());
         }
 
