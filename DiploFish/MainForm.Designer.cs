@@ -79,7 +79,7 @@
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
             this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.openToolStripMenuItem.Text = "Open";
-            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click_1);
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -124,6 +124,7 @@
             this.fishButton.TabIndex = 5;
             this.fishButton.Text = "Fish";
             this.fishButton.UseVisualStyleBackColor = true;
+            this.fishButton.Click += new System.EventHandler(this.fishButton_Click);
             // 
             // openFileDialog
             // 

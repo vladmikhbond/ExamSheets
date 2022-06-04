@@ -30,7 +30,7 @@ namespace DiploFish.Models
         }
         public ClauseDict(string content)
         {
-            Regex regex = new Regex(@"@\[.*\]");
+            Regex regex = new Regex(@"@\[[^@^[]*\]");
             var matches = regex.Matches(content);
             var ss = regex.Split(content)
                 .Select(s => s.Trim()).ToArray();
@@ -48,15 +48,19 @@ namespace DiploFish.Models
 
         public static string Substitute(string template, ClauseDict data, ClauseDict person)
         {
-            Regex regex = new Regex(@"@\[.*\]");
+            Regex regex = new Regex(@"@\[[^@^[]*\]");
             var keys = regex.Matches(template).OfType<Match>().Select(m => m.Value).ToArray();
             foreach (var key in keys)
-            {        
-                template = template.Replace(key, person[key].Sentence);
+            {
+                if (person.ContainsKey(key))
+                    template = template.Replace(key, person[key].Sentence);
             }
-
-
-            return null;
+            foreach (var key in keys)
+            {
+                if (data.ContainsKey(key))
+                    template = template.Replace(key, data[key].Sentence);
+            }
+            return template;
         }
 
 

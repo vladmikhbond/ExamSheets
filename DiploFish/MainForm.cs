@@ -28,7 +28,7 @@ namespace DiploFish
             }
         }
 
-        private void goButton_Click(object sender, EventArgs e)
+        private void fishButton_Click(object sender, EventArgs e)
         {
             ClauseDict person = new ClauseDict(personBox.Text);
             ClauseDict data;
@@ -44,10 +44,6 @@ namespace DiploFish
                 template = File.ReadAllText(@"data\templateR.txt");
             }
             personBox.Text = ClauseDict.Substitute(template, data, person);
-        }
-
-        private void openToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
 
         }
     }
