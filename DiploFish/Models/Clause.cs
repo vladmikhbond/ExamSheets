@@ -53,10 +53,10 @@ namespace DiploFish.Models
             string template;
             if (isFeedback)
             {
-                data = ClauseDict.FromFile(@"data\dataF.txt");
+                data = FromFile(@"data\dataF.txt");
                 template = File.ReadAllText(@"data\templateF.txt");
             } else {
-                data = ClauseDict.FromFile(@"data\dataR.txt");
+                data = FromFile(@"data\dataR.txt");
                 template = File.ReadAllText(@"data\templateR.txt");
             }
 
@@ -78,7 +78,7 @@ namespace DiploFish.Models
             return template;
         }
 
-        public static void CreateDoc(string[] lines)
+        public static void CreateDoc(string[] lines, string personPath)
         {
 // https://www.e-iceblue.com/Tutorials/Spire.Doc/Spire.Doc-Program-Guide/Create-Write-and-Save-Word-in-C-and-VB.NET.html
 
@@ -103,23 +103,23 @@ namespace DiploFish.Models
             for (int i = 0; i < lines.Length; i++)
             {
                 Paragraph para = section.AddParagraph();
-                para.AppendText(lines[i].Trim());
-                para.ApplyStyle("style1");
-                if (i < 7)
+                string text = lines[i].Trim();
+                if (text.Length > 0 && text[0] == '`')
                 {
+                    para.Text = text.Substring(1);
                     para.Format.HorizontalAlignment = HorizontalAlignment.Center;
-                } 
-                else
+                } else
                 {
+                    para.Text = text;
                     para.Format.HorizontalAlignment = HorizontalAlignment.Justify;
                     para.Format.FirstLineIndent = 30;
-                }             
+                }
+                para.ApplyStyle("style1");
             }
             //Save to file
-            doc.SaveToFile(@"data\WordDocument.docx", FileFormat.Docx2013);
-            System.Diagnostics.Process.Start(@"data\WordDocument.docx");
+            string path = Path.ChangeExtension(personPath, ".docx");
+            doc.SaveToFile(path, FileFormat.Docx2013);
+            System.Diagnostics.Process.Start(path);
         }
-
-
     }
 }

@@ -32,7 +32,7 @@ namespace DiploFish
         {
             ClauseDict person = new ClauseDict(personBox.Text);
             personBox.Text = ClauseDict.Substitute(person, feedRadio.Checked);
-            ClauseDict.CreateDoc(personBox.Lines);
+            ClauseDict.CreateDoc(personBox.Lines, openFileDialog.FileName);
         }
     }
 }
