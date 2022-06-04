@@ -31,20 +31,8 @@ namespace DiploFish
         private void fishButton_Click(object sender, EventArgs e)
         {
             ClauseDict person = new ClauseDict(personBox.Text);
-            ClauseDict data;
-            string template;
-            if (feedRadio.Checked)
-            {
-                data = ClauseDict.FromFile(@"data\dataF.txt");
-                template = File.ReadAllText(@"data\templateF.txt");
-            } 
-            else
-            {
-                data = ClauseDict.FromFile(@"data\dataR.txt");
-                template = File.ReadAllText(@"data\templateR.txt");
-            }
-            personBox.Text = ClauseDict.Substitute(template, data, person);
-
+            personBox.Text = ClauseDict.Substitute(person, feedRadio.Checked);
+            ClauseDict.CreateDoc(personBox.Lines);
         }
     }
 }

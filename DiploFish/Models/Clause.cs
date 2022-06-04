@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Spire.Doc;
+using Spire.Doc.Documents;
 
 namespace DiploFish.Models
 {
@@ -14,12 +17,12 @@ namespace DiploFish.Models
         public string[] Sentences { get; set; }
         public string Sentence => Sentences.FirstOrDefault();
 
-        //public override string ToString()
-        //{
-        //    return Tag + Environment.NewLine + string.Join(Environment.NewLine, Sentences);
-        //}
+        public string GetRandomSentence(Random rnd)
+        {
+            int i = rnd.Next(Sentences.Length);
+            return Sentences[i];
+        }
     }
-
 
     public class ClauseDict : Dictionary<string, Clause>
     {  
@@ -35,19 +38,31 @@ namespace DiploFish.Models
             var ss = regex.Split(content)
                 .Select(s => s.Trim()).ToArray();
             var clauses = matches.OfType<Match>().Select((m, i) =>
-              new Clause { Tag = m.Value, Sentences = ss[i + 1].Split('\n') })
-                .ToList();
+              new Clause { 
+                  Tag = m.Value, 
+                  Sentences = ss[i + 1].Split(new char[]{'\n','\r'}, StringSplitOptions.RemoveEmptyEntries) 
+              }).ToList();
+
             clauses.ForEach(c => this[c.Tag] = c);
         }
 
-        //public override string ToString()
-        //{
-        //    var arr = this.Select(c => c.ToString()).ToArray();
-        //    return string.Join(Environment.NewLine, arr);
-        //}
-
-        public static string Substitute(string template, ClauseDict data, ClauseDict person)
+        public static string Substitute(ClauseDict person, bool isFeedback )
         {
+            // load data
+            ClauseDict data;
+            string template;
+            if (isFeedback)
+            {
+                data = ClauseDict.FromFile(@"data\dataF.txt");
+                template = File.ReadAllText(@"data\templateF.txt");
+            } else {
+                data = ClauseDict.FromFile(@"data\dataR.txt");
+                template = File.ReadAllText(@"data\templateR.txt");
+            }
+
+            Random rnd = new Random();
+
+            // do substitutions
             Regex regex = new Regex(@"@\[[^@^[]*\]");
             var keys = regex.Matches(template).OfType<Match>().Select(m => m.Value).ToArray();
             foreach (var key in keys)
@@ -58,9 +73,51 @@ namespace DiploFish.Models
             foreach (var key in keys)
             {
                 if (data.ContainsKey(key))
-                    template = template.Replace(key, data[key].Sentence);
+                    template = template.Replace(key, data[key].GetRandomSentence(rnd));
             }
             return template;
+        }
+
+        public static void CreateDoc(string[] lines)
+        {
+// https://www.e-iceblue.com/Tutorials/Spire.Doc/Spire.Doc-Program-Guide/Create-Write-and-Save-Word-in-C-and-VB.NET.html
+
+            //Create a Document object
+            Document doc = new Document();
+            //Add a section
+            Section section = doc.AddSection();
+            //Set the page margins
+            section.PageSetup.Margins.Left = 75f;
+            section.PageSetup.Margins.Right = 40f;
+            section.PageSetup.Margins.Top = 70f;
+            section.PageSetup.Margins.Bottom = 70f;
+
+            ParagraphStyle style1 = new ParagraphStyle(doc);          
+            style1.Name = "style1";
+            style1.CharacterFormat.FontName = "Times New Roman";
+            style1.CharacterFormat.FontSize = 13;
+            //style1.CharacterFormat.Bold = true;
+
+            doc.Styles.Add(style1);
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                Paragraph para = section.AddParagraph();
+                para.AppendText(lines[i].Trim());
+                para.ApplyStyle("style1");
+                if (i < 7)
+                {
+                    para.Format.HorizontalAlignment = HorizontalAlignment.Center;
+                } 
+                else
+                {
+                    para.Format.HorizontalAlignment = HorizontalAlignment.Justify;
+                    para.Format.FirstLineIndent = 30;
+                }             
+            }
+            //Save to file
+            doc.SaveToFile(@"data\WordDocument.docx", FileFormat.Docx2013);
+            System.Diagnostics.Process.Start(@"data\WordDocument.docx");
         }
 
 
