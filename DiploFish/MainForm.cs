@@ -31,6 +31,8 @@ namespace DiploFish
         private void fishButton_Click(object sender, EventArgs e)
         {
             ClauseDict person = new ClauseDict(personBox.Text);
+            person.ResumeCorrection();
+
             personBox.Text = ClauseDict.Substitute(person, feedRadio.Checked);
             ClauseDict.CreateDoc(personBox.Lines, openFileDialog.FileName);
         }

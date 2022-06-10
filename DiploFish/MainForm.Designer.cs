@@ -128,7 +128,7 @@
             // 
             // openFileDialog
             // 
-            this.openFileDialog.FileName = "Student";
+            this.openFileDialog.FileName = "Годованець.txt";
             this.openFileDialog.Filter = "txt |*.txt";
             this.openFileDialog.InitialDirectory = "C:\\Git\\ExamSheets\\DiploFish\\data";
             // 
