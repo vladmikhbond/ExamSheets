@@ -33,8 +33,9 @@ namespace DiploFish
             ClauseDict person = new ClauseDict(personBox.Text);
             person.ResumeCorrection();
 
-            personBox.Text = ClauseDict.Substitute(person, feedRadio.Checked);
-            ClauseDict.CreateDoc(personBox.Lines, openFileDialog.FileName);
+            string text = ClauseDict.Substitute(person, feedRadio.Checked);
+            string[] lines = text.Split('\n');
+            ClauseDict.CreateDoc(lines, openFileDialog.FileName);
         }
     }
 }

@@ -46,9 +46,9 @@ namespace DiploFish.Models
             clauses.ForEach(c => this[c.Tag] = c);
         }
 
+        // свертка всех строк в одну строку для ключа @[resume]
         public void ResumeCorrection()
         {
-            // свертка всех строк в одну для ключа @[resume]
             string sentence = string.Join(" ", this["@[resume]"].Sentences);
             this["@[resume]"].Sentences = new[] { sentence }; 
         }
@@ -59,7 +59,8 @@ namespace DiploFish.Models
             ClauseDict data = FromFile(@"data\data.txt");
             string template = isFeedback ?
                 File.ReadAllText(@"data\templateF.txt") :
-                template = File.ReadAllText(@"data\templateR.txt");            
+                template = File.ReadAllText(@"data\templateR.txt");
+            
 
             Random rnd = new Random();
 
