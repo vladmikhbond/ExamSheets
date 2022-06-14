@@ -35,7 +35,15 @@ namespace DiploFish
 
             string text = ClauseDict.Substitute(person, feedRadio.Checked);
             string[] lines = text.Split('\n');
-            ClauseDict.CreateDoc(lines, openFileDialog.FileName);
+
+            // file name
+            string dir = Path.GetDirectoryName(openFileDialog.FileName);
+            string kind = feedRadio.Checked ? "відзив" : "рецензія";
+            string group = person["@[group]"].Sentence;
+            string name = person["@[name]"].Sentence.Replace(' ', '_').Replace('.', '_');
+            string path = Path.Combine(dir, $"2022_Б_ПІ_{group}_{name}{kind}.docx");
+
+            ClauseDict.CreateDoc(lines, path);
         }
     }
 }

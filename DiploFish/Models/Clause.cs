@@ -80,7 +80,7 @@ namespace DiploFish.Models
             return template;
         }
 
-        public static void CreateDoc(string[] lines, string personPath)
+        public static void CreateDoc(string[] lines, string path)
         {
 // https://www.e-iceblue.com/Tutorials/Spire.Doc/Spire.Doc-Program-Guide/Create-Write-and-Save-Word-in-C-and-VB.NET.html
 
@@ -118,8 +118,8 @@ namespace DiploFish.Models
                 }
                 para.ApplyStyle("style1");
             }
+
             //Save to file
-            string path = Path.ChangeExtension(personPath, ".docx");
             doc.SaveToFile(path, FileFormat.Docx2013);
             System.Diagnostics.Process.Start(path);
         }
