@@ -30,20 +30,9 @@ namespace DiploFish
 
         private void fishButton_Click(object sender, EventArgs e)
         {
-            ClauseDict person = new ClauseDict(personBox.Text);
-            person.ResumeCorrection();
+            Utils.Run(personBox.Text, openFileDialog.FileName, feedRadio.Checked);
+        }   
 
-            string text = ClauseDict.Substitute(person, feedRadio.Checked);
-            string[] lines = text.Split('\n');
-
-            // file name
-            string dir = Path.GetDirectoryName(openFileDialog.FileName);
-            string kind = feedRadio.Checked ? "відзив" : "рецензія";
-            string group = person["@[group]"].Sentence;
-            string name = person["@[name]"].Sentence.Replace(' ', '_').Replace('.', '_');
-            string path = Path.Combine(dir, $"2022_Б_ПІ_{group}_{name}{kind}.docx");
-
-            ClauseDict.CreateDoc(lines, path);
-        }
+       
     }
 }

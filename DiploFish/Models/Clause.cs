@@ -44,84 +44,47 @@ namespace DiploFish.Models
               }).ToList();
 
             clauses.ForEach(c => this[c.Tag] = c);
+            //
+            // ResumeCorrection();
+
         }
 
         // свертка всех строк в одну строку для ключа @[resume]
         public void ResumeCorrection()
         {
             string sentence = string.Join(" ", this["@[resume]"].Sentences);
-            this["@[resume]"].Sentences = new[] { sentence }; 
+            this["@[resume]"].Sentences = new[] { sentence };
         }
 
-        public static string Substitute(ClauseDict person, bool isFeedback )
+        // расширение оценки для ключа @[mark]
+        public void MarkCorrection()
         {
-            // load data
-            ClauseDict data = FromFile(@"data\data.txt");
-            string template = isFeedback ?
-                File.ReadAllText(@"data\templateF.txt") :
-                template = File.ReadAllText(@"data\templateR.txt");
-            
-
-            Random rnd = new Random();
-
-            // do substitutions
-            Regex regex = new Regex(@"@\[[^@^[]*\]");
-            var keys = regex.Matches(template).OfType<Match>().Select(m => m.Value).ToArray();
-            foreach (var key in keys)
+            string markStr = this["@[mark]"].Sentence;
+            int mark;
+            try
             {
-                if (person.ContainsKey(key))
-                    template = template.Replace(key, person[key].Sentence);
-            }
-            foreach (var key in keys)
+                mark = Convert.ToInt32(markStr);
+            } catch
             {
-                if (data.ContainsKey(key))
-                    template = template.Replace(key, data[key].GetRandomSentence(rnd));
+                return;
             }
-            return template;
+            if (mark >= 96)
+                this["@[mark]"].Sentences[0] = $"відмінно {mark} (A)";
+            else if (mark >= 90)
+                this["@[mark]"].Sentences[0] = $"відмінно {mark} (B)";
+            else if (mark >= 75)
+                this["@[mark]"].Sentences[0] = $"добре {mark} (C)";
+            else if (mark >= 65)
+                this["@[mark]"].Sentences[0] = $"задовільно {mark} (D)";
+            else if (mark >= 60)
+                this["@[mark]"].Sentences[0] = $"задовільно {mark} (E)";            
         }
 
-        public static void CreateDoc(string[] lines, string path)
-        {
-// https://www.e-iceblue.com/Tutorials/Spire.Doc/Spire.Doc-Program-Guide/Create-Write-and-Save-Word-in-C-and-VB.NET.html
 
-            //Create a Document object
-            Document doc = new Document();
-            //Add a section
-            Section section = doc.AddSection();
-            //Set the page margins
-            section.PageSetup.Margins.Left = 75f;
-            section.PageSetup.Margins.Right = 40f;
-            section.PageSetup.Margins.Top = 70f;
-            section.PageSetup.Margins.Bottom = 70f;
 
-            ParagraphStyle style1 = new ParagraphStyle(doc);          
-            style1.Name = "style1";
-            style1.CharacterFormat.FontName = "Times New Roman";
-            style1.CharacterFormat.FontSize = 13;
-            //style1.CharacterFormat.Bold = true;
 
-            doc.Styles.Add(style1);
 
-            for (int i = 0; i < lines.Length; i++)
-            {
-                Paragraph para = section.AddParagraph();
-                string text = lines[i].Trim();
-                if (text.Length > 0 && text[0] == '`')
-                {
-                    para.Text = text.Substring(1);
-                    para.Format.HorizontalAlignment = HorizontalAlignment.Center;
-                } else
-                {
-                    para.Text = text;
-                    para.Format.HorizontalAlignment = HorizontalAlignment.Justify;
-                    para.Format.FirstLineIndent = 30;
-                }
-                para.ApplyStyle("style1");
-            }
-
-            //Save to file
-            doc.SaveToFile(path, FileFormat.Docx2013);
-            System.Diagnostics.Process.Start(path);
-        }
     }
+
+
 }
