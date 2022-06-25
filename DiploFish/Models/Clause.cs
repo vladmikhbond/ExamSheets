@@ -33,27 +33,24 @@ namespace DiploFish.Models
         }
         public ClauseDict(string content)
         {
-            Regex regex = new Regex(@"@\[[^@^[]*\]");
+            Regex regex = new Regex(@"@\[[^@^[]*\]");  // @[key]
             var matches = regex.Matches(content);
-            var ss = regex.Split(content)
+
+            var value = regex.Split(content)
                 .Select(s => s.Trim()).ToArray();
+
             var clauses = matches.OfType<Match>().Select((m, i) =>
               new Clause { 
-                  Tag = m.Value, 
-                  Sentences = ss[i + 1].Split(new char[]{'\n','\r'}, StringSplitOptions.RemoveEmptyEntries) 
+                  Tag = m.Value,
+            
+                  Sentences = value[i + 1].Split('|')
+                      .Select(sent => sent.Trim().Replace("\r\n", " ").Replace(">", "\r\n"))
+                      .Where(sent => sent != "")
+                      .ToArray()
               }).ToList();
 
             clauses.ForEach(c => this[c.Tag] = c);
-            //
-            // ResumeCorrection();
 
-        }
-
-        // свертка всех строк в одну строку для ключа @[resume]
-        public void ResumeCorrection()
-        {
-            string sentence = string.Join(" ", this["@[resume]"].Sentences);
-            this["@[resume]"].Sentences = new[] { sentence };
         }
 
         // расширение оценки для ключа @[mark]

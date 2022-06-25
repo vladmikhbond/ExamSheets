@@ -26,7 +26,6 @@ namespace DiploFish.Models
         public static ClauseDict GetPerson(string text)
         {
             var person = new ClauseDict(text);
-            person.ResumeCorrection();
             person.MarkCorrection();
             return person;
         }
@@ -44,8 +43,10 @@ namespace DiploFish.Models
             Random rnd = new Random();
 
             // do substitutions
-            Regex regex = new Regex(@"@\[[^@^[]*\]");
+            Regex regex = new Regex(@"@\[[^@^[]*\]");   // @[key]
+
             var keys = regex.Matches(template).OfType<Match>().Select(m => m.Value).ToArray();
+
             foreach (var key in keys)
             {
                 if (person.ContainsKey(key))
