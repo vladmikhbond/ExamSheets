@@ -19,7 +19,7 @@ namespace ExamSheets
                 try
                 {
                     _sheet = new Sheet(openDocDialog.FileName, dateBox.Text, examRadio.Checked);
-                    _sheet.LoadMarks(dataBox.Text);
+                    _sheet.LoadMarks(dataBox.Text.Trim());
 
                     messageBox.Text = _sheet.WriteData();
                     System.Diagnostics.Process.Start(_sheet.OutputPath);
