@@ -124,7 +124,7 @@
   <data name="openToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAJHSURBVDhPxZBdSNNhFMb/F110ZZEVhVBgeeHNICiiuggp
+        YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAJHSURBVDhPxZBdSNNhFMb/F110ZZEVhVBgeeHNICiiuggp
         olAUyyxI0oSaH1QYC3N+tKnp5ubm1JUua5uuqdNKMwr7kApFItTUkWZqVhSVYmao5Nevvy7UoYR3HXh4
         4XCe33nOKyy3lAY7l9RWMo0O/raWXxEyo5spVYTNvOGyfIRPfW+ptOkXqaPl6T83hcRmExSdgzAz3NVm
         YWyoYla/B+1M9JtxWLPpaH22JORIjI6gKAMB0jyEimIdo4OlbuaprwVMOOMovammpDADc34qppwUrmnl
@@ -141,28 +141,29 @@
     <value>152, 17</value>
   </metadata>
   <data name="dataBox.Text" xml:space="preserve">
-    <value>Великородній	87
-Галівець	79
-Горюшко	93
-Живаєв	69
-Журавльов	80
-Кіданов	91
-Кіслов	85
-Ключник	0
-Кравцов	0
-Кукленко	64
-Лісовин	61
-Михневич	98
-Міранян	28
-Ніколенко	88
-Пархоменко	88
-Прокопчук	96
-Сафонов	97
-Старіченко	63
-Тішенінова	88
-Трипілка	96
-Флягін	100
-Черних	63
-Шульдінер	83</value>
+    <value>Бабарика	75
+Береговий	74
+Білоус	75
+Боков	1
+Верясов	71
+Глинський	77
+Дерібас	65
+Добровольська	65
+Д`яченко	71
+Єременко	77
+Жуйков	65
+Захаров	83
+Зоренко	75
+Кононихіна	68
+Кочетов	92
+Лук`янов	76
+Московченко	66
+Моссур	69
+Несміянова	64
+Синенко	90
+Терновий	77
+Тіщенко	76
+Шелехань	86
+Юкленчук	90</value>
   </data>
 </root>
