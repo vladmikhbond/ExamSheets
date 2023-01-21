@@ -41,11 +41,24 @@ namespace ExamSheets.Models
             } else {
                 ss = path.Split('\n').Select(s => s.Trim()).ToArray();
             }
-            _marks = ss.Select(x => x.Split(new char[] { '\t' }, StringSplitOptions.RemoveEmptyEntries))
-                .ToDictionary(ar => ar[0].Trim(), ar => ar[1].Trim());
-        }
+            _marks = ss.Select(s => Helper(s))                 
+                .ToDictionary(t => t.Item1, t => t.Item2 );
 
-        void ExtractRows()
+         // "Шаламов Сергій Артемович\t79" => ("Шаламов", "79")
+         (string, string) Helper(string s)
+         {
+            string[] ar2 = s.Split('\t');   
+            string[] ar3 = ar2[0].Split(' ');
+            string surname = ar3[0].Trim();
+            string mark = ar2[1].Trim();
+            if (mark == "0")
+               mark = "1";
+            return (surname, mark);
+         }
+
+      }
+
+      void ExtractRows()
         {
             Table table1 = _document.Sections[0].Paragraphs[8].NextSibling as Table;
             Table table2 = _document.Sections[0].Paragraphs[9].NextSibling as Table;

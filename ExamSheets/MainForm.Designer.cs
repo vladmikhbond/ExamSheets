@@ -57,7 +57,7 @@
          this.menuStrip1.Location = new System.Drawing.Point(3, 4);
          this.menuStrip1.Name = "menuStrip1";
          this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-         this.menuStrip1.Size = new System.Drawing.Size(398, 33);
+         this.menuStrip1.Size = new System.Drawing.Size(478, 33);
          this.menuStrip1.TabIndex = 1;
          this.menuStrip1.Text = "menuStrip1";
          // 
@@ -134,7 +134,7 @@
          this.dataBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
          this.dataBox.Multiline = true;
          this.dataBox.Name = "dataBox";
-         this.dataBox.Size = new System.Drawing.Size(396, 589);
+         this.dataBox.Size = new System.Drawing.Size(476, 624);
          this.dataBox.TabIndex = 4;
          this.dataBox.Text = resources.GetString("dataBox.Text");
          // 
@@ -144,12 +144,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
          this.messageBox.BackColor = System.Drawing.SystemColors.InactiveBorder;
          this.messageBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.messageBox.Location = new System.Drawing.Point(3, 691);
+         this.messageBox.Location = new System.Drawing.Point(3, 726);
          this.messageBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
          this.messageBox.Multiline = true;
          this.messageBox.Name = "messageBox";
          this.messageBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-         this.messageBox.Size = new System.Drawing.Size(396, 180);
+         this.messageBox.Size = new System.Drawing.Size(476, 180);
          this.messageBox.TabIndex = 4;
          this.messageBox.TabStop = false;
          // 
@@ -175,7 +175,7 @@
          // 
          this.testRadio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
          this.testRadio.AutoSize = true;
-         this.testRadio.Location = new System.Drawing.Point(335, 49);
+         this.testRadio.Location = new System.Drawing.Point(415, 49);
          this.testRadio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
          this.testRadio.Name = "testRadio";
          this.testRadio.Size = new System.Drawing.Size(65, 24);
@@ -189,7 +189,7 @@
          this.examRadio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
          this.examRadio.AutoSize = true;
          this.examRadio.Checked = true;
-         this.examRadio.Location = new System.Drawing.Point(258, 49);
+         this.examRadio.Location = new System.Drawing.Point(338, 49);
          this.examRadio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
          this.examRadio.Name = "examRadio";
          this.examRadio.Size = new System.Drawing.Size(74, 24);
@@ -202,7 +202,7 @@
          // 
          this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(404, 879);
+         this.ClientSize = new System.Drawing.Size(484, 914);
          this.Controls.Add(this.examRadio);
          this.Controls.Add(this.testRadio);
          this.Controls.Add(this.label1);
