@@ -54,10 +54,9 @@
          this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.helpToolStripMenuItem});
-         this.menuStrip1.Location = new System.Drawing.Point(3, 4);
+         this.menuStrip1.Location = new System.Drawing.Point(3, 3);
          this.menuStrip1.Name = "menuStrip1";
-         this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-         this.menuStrip1.Size = new System.Drawing.Size(478, 33);
+         this.menuStrip1.Size = new System.Drawing.Size(424, 28);
          this.menuStrip1.TabIndex = 1;
          this.menuStrip1.Text = "menuStrip1";
          // 
@@ -68,7 +67,7 @@
             this.toolStripSeparator,
             this.exitToolStripMenuItem});
          this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-         this.fileToolStripMenuItem.Size = new System.Drawing.Size(54, 29);
+         this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
          this.fileToolStripMenuItem.Text = "&File";
          // 
          // openToolStripMenuItem
@@ -77,19 +76,19 @@
          this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
          this.openToolStripMenuItem.Name = "openToolStripMenuItem";
          this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-         this.openToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
+         this.openToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
          this.openToolStripMenuItem.Text = "&Open";
          this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
          // 
          // toolStripSeparator
          // 
          this.toolStripSeparator.Name = "toolStripSeparator";
-         this.toolStripSeparator.Size = new System.Drawing.Size(220, 6);
+         this.toolStripSeparator.Size = new System.Drawing.Size(178, 6);
          // 
          // exitToolStripMenuItem
          // 
          this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-         this.exitToolStripMenuItem.Size = new System.Drawing.Size(223, 34);
+         this.exitToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
          this.exitToolStripMenuItem.Text = "E&xit";
          // 
          // helpToolStripMenuItem
@@ -99,25 +98,25 @@
             this.toolStripSeparator5,
             this.aboutToolStripMenuItem});
          this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-         this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 29);
+         this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
          this.helpToolStripMenuItem.Text = "&Help";
          // 
          // contentsToolStripMenuItem
          // 
          this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
-         this.contentsToolStripMenuItem.Size = new System.Drawing.Size(176, 34);
+         this.contentsToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
          this.contentsToolStripMenuItem.Text = "&Help...";
          this.contentsToolStripMenuItem.Click += new System.EventHandler(this.contentsToolStripMenuItem_Click);
          // 
          // toolStripSeparator5
          // 
          this.toolStripSeparator5.Name = "toolStripSeparator5";
-         this.toolStripSeparator5.Size = new System.Drawing.Size(173, 6);
+         this.toolStripSeparator5.Size = new System.Drawing.Size(139, 6);
          // 
          // aboutToolStripMenuItem
          // 
          this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-         this.aboutToolStripMenuItem.Size = new System.Drawing.Size(176, 34);
+         this.aboutToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
          this.aboutToolStripMenuItem.Text = "&About...";
          // 
          // openDocDialog
@@ -130,13 +129,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
          this.dataBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.dataBox.Location = new System.Drawing.Point(3, 94);
-         this.dataBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+         this.dataBox.Location = new System.Drawing.Point(3, 75);
          this.dataBox.Multiline = true;
          this.dataBox.Name = "dataBox";
-         this.dataBox.Size = new System.Drawing.Size(476, 624);
+         this.dataBox.Size = new System.Drawing.Size(424, 500);
          this.dataBox.TabIndex = 4;
-         this.dataBox.Text = resources.GetString("dataBox.Text");
+         this.dataBox.Text = "Миколаєнко Микола Миколайович\t100\r\n";
          // 
          // messageBox
          // 
@@ -144,30 +142,28 @@
             | System.Windows.Forms.AnchorStyles.Right)));
          this.messageBox.BackColor = System.Drawing.SystemColors.InactiveBorder;
          this.messageBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-         this.messageBox.Location = new System.Drawing.Point(3, 726);
-         this.messageBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+         this.messageBox.Location = new System.Drawing.Point(3, 581);
          this.messageBox.Multiline = true;
          this.messageBox.Name = "messageBox";
          this.messageBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-         this.messageBox.Size = new System.Drawing.Size(476, 180);
+         this.messageBox.Size = new System.Drawing.Size(424, 145);
          this.messageBox.TabIndex = 4;
          this.messageBox.TabStop = false;
          // 
          // dateBox
          // 
-         this.dateBox.Location = new System.Drawing.Point(58, 48);
-         this.dateBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+         this.dateBox.Location = new System.Drawing.Point(52, 38);
          this.dateBox.Name = "dateBox";
-         this.dateBox.Size = new System.Drawing.Size(101, 26);
+         this.dateBox.Size = new System.Drawing.Size(90, 22);
          this.dateBox.TabIndex = 1;
-         this.dateBox.Text = "19.10";
+         this.dateBox.Text = "14.06";
          // 
          // label1
          // 
          this.label1.AutoSize = true;
-         this.label1.Location = new System.Drawing.Point(11, 51);
+         this.label1.Location = new System.Drawing.Point(10, 41);
          this.label1.Name = "label1";
-         this.label1.Size = new System.Drawing.Size(44, 20);
+         this.label1.Size = new System.Drawing.Size(36, 16);
          this.label1.TabIndex = 6;
          this.label1.Text = "Date";
          // 
@@ -175,10 +171,10 @@
          // 
          this.testRadio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
          this.testRadio.AutoSize = true;
-         this.testRadio.Location = new System.Drawing.Point(415, 49);
-         this.testRadio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+         this.testRadio.Checked = true;
+         this.testRadio.Location = new System.Drawing.Point(372, 39);
          this.testRadio.Name = "testRadio";
-         this.testRadio.Size = new System.Drawing.Size(65, 24);
+         this.testRadio.Size = new System.Drawing.Size(55, 20);
          this.testRadio.TabIndex = 3;
          this.testRadio.TabStop = true;
          this.testRadio.Text = "Test";
@@ -188,21 +184,18 @@
          // 
          this.examRadio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
          this.examRadio.AutoSize = true;
-         this.examRadio.Checked = true;
-         this.examRadio.Location = new System.Drawing.Point(338, 49);
-         this.examRadio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+         this.examRadio.Location = new System.Drawing.Point(304, 39);
          this.examRadio.Name = "examRadio";
-         this.examRadio.Size = new System.Drawing.Size(74, 24);
+         this.examRadio.Size = new System.Drawing.Size(62, 20);
          this.examRadio.TabIndex = 2;
-         this.examRadio.TabStop = true;
          this.examRadio.Text = "Exam";
          this.examRadio.UseVisualStyleBackColor = true;
          // 
          // MainForm
          // 
-         this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+         this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
          this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-         this.ClientSize = new System.Drawing.Size(484, 914);
+         this.ClientSize = new System.Drawing.Size(430, 731);
          this.Controls.Add(this.examRadio);
          this.Controls.Add(this.testRadio);
          this.Controls.Add(this.label1);
@@ -211,10 +204,9 @@
          this.Controls.Add(this.dataBox);
          this.Controls.Add(this.menuStrip1);
          this.MainMenuStrip = this.menuStrip1;
-         this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-         this.MinimumSize = new System.Drawing.Size(335, 361);
+         this.MinimumSize = new System.Drawing.Size(300, 298);
          this.Name = "MainForm";
-         this.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+         this.Padding = new System.Windows.Forms.Padding(3);
          this.Text = "Exam Sheets";
          this.menuStrip1.ResumeLayout(false);
          this.menuStrip1.PerformLayout();
