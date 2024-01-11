@@ -47,10 +47,9 @@ namespace ExamSheets.Models
          // "Шаламов Сергій Артемович\t79" => ("Шаламов", "79")
          (string, string) Helper(string s)
          {
-            string[] ar2 = s.Split('\t');   
-            string[] ar3 = ar2[0].Split(' ');
-            string surname = ar3[0].Trim();
-            string mark = ar2[ar2.Length - 1].Trim();     ///////////
+            string[] ar = s.Split('\t', ' ');   
+            string surname = ar[0].Trim();
+            string mark = ar[ar.Length - 1].Trim();
             if (mark == "0")
                mark = "1";
             return (surname, mark);
