@@ -156,7 +156,7 @@
          this.dateBox.Name = "dateBox";
          this.dateBox.Size = new System.Drawing.Size(90, 22);
          this.dateBox.TabIndex = 1;
-         this.dateBox.Text = "3.01";
+         this.dateBox.Text = "11.01";
          // 
          // label1
          // 
@@ -206,7 +206,7 @@
          this.MainMenuStrip = this.menuStrip1;
          this.MinimumSize = new System.Drawing.Size(300, 296);
          this.Name = "MainForm";
-         this.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+         this.Padding = new System.Windows.Forms.Padding(3);
          this.Text = "Exam Sheets";
          this.menuStrip1.ResumeLayout(false);
          this.menuStrip1.PerformLayout();

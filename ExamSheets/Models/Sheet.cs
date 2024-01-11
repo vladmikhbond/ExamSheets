@@ -50,7 +50,7 @@ namespace ExamSheets.Models
             string[] ar2 = s.Split('\t');   
             string[] ar3 = ar2[0].Split(' ');
             string surname = ar3[0].Trim();
-            string mark = ar2[1].Trim();
+            string mark = ar2[ar2.Length - 1].Trim();     ///////////
             if (mark == "0")
                mark = "1";
             return (surname, mark);
