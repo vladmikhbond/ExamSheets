@@ -44,7 +44,7 @@ namespace ExamSheets.Models
             _marks = ss.Select(s => Helper(s))                 
                 .ToDictionary(t => t.Item1, t => t.Item2 );
 
-         // "Шаламов Сергій Артемович\t79" => ("Шаламов", "79")
+         // "Шаламов Сергій Артемович\t ... \t79" => ("Шаламов", "79")
          (string, string) Helper(string s)
          {
             string[] ar = s.Split('\t', ' ');   
