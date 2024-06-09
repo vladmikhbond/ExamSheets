@@ -76,19 +76,19 @@
          this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
          this.openToolStripMenuItem.Name = "openToolStripMenuItem";
          this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-         this.openToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+         this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
          this.openToolStripMenuItem.Text = "&Open";
          this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
          // 
          // toolStripSeparator
          // 
          this.toolStripSeparator.Name = "toolStripSeparator";
-         this.toolStripSeparator.Size = new System.Drawing.Size(178, 6);
+         this.toolStripSeparator.Size = new System.Drawing.Size(221, 6);
          // 
          // exitToolStripMenuItem
          // 
          this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-         this.exitToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+         this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
          this.exitToolStripMenuItem.Text = "E&xit";
          // 
          // helpToolStripMenuItem
@@ -156,7 +156,7 @@
          this.dateBox.Name = "dateBox";
          this.dateBox.Size = new System.Drawing.Size(90, 22);
          this.dateBox.TabIndex = 1;
-         this.dateBox.Text = "11.01";
+         this.dateBox.Text = "10.06";
          // 
          // label1
          // 
@@ -171,10 +171,12 @@
          // 
          this.testRadio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
          this.testRadio.AutoSize = true;
+         this.testRadio.Checked = true;
          this.testRadio.Location = new System.Drawing.Point(372, 39);
          this.testRadio.Name = "testRadio";
          this.testRadio.Size = new System.Drawing.Size(55, 20);
          this.testRadio.TabIndex = 3;
+         this.testRadio.TabStop = true;
          this.testRadio.Text = "Test";
          this.testRadio.UseVisualStyleBackColor = true;
          // 
@@ -182,12 +184,10 @@
          // 
          this.examRadio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
          this.examRadio.AutoSize = true;
-         this.examRadio.Checked = true;
          this.examRadio.Location = new System.Drawing.Point(304, 39);
          this.examRadio.Name = "examRadio";
          this.examRadio.Size = new System.Drawing.Size(62, 20);
          this.examRadio.TabIndex = 2;
-         this.examRadio.TabStop = true;
          this.examRadio.Text = "Exam";
          this.examRadio.UseVisualStyleBackColor = true;
          // 
