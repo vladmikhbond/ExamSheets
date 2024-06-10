@@ -76,19 +76,19 @@
          this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
          this.openToolStripMenuItem.Name = "openToolStripMenuItem";
          this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-         this.openToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+         this.openToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
          this.openToolStripMenuItem.Text = "&Open";
          this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
          // 
          // toolStripSeparator
          // 
          this.toolStripSeparator.Name = "toolStripSeparator";
-         this.toolStripSeparator.Size = new System.Drawing.Size(221, 6);
+         this.toolStripSeparator.Size = new System.Drawing.Size(178, 6);
          // 
          // exitToolStripMenuItem
          // 
          this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-         this.exitToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+         this.exitToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
          this.exitToolStripMenuItem.Text = "E&xit";
          // 
          // helpToolStripMenuItem
@@ -134,7 +134,7 @@
          this.dataBox.Name = "dataBox";
          this.dataBox.Size = new System.Drawing.Size(424, 500);
          this.dataBox.TabIndex = 4;
-         this.dataBox.Text = resources.GetString("dataBox.Text");
+         this.dataBox.Text = "Абдулаєв\t71\r\nБілоножко\t60\r\nБогатир\t85\r\nЗахаров\t25";
          // 
          // messageBox
          // 
