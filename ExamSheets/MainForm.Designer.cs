@@ -156,7 +156,7 @@
          this.dateBox.Name = "dateBox";
          this.dateBox.Size = new System.Drawing.Size(90, 22);
          this.dateBox.TabIndex = 1;
-         this.dateBox.Text = "10.06";
+         this.dateBox.Text = "25.06";
          // 
          // label1
          // 
